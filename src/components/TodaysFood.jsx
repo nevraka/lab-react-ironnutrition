@@ -4,6 +4,7 @@ const TodaysFood = ({ todaysFood }) => {
   const total = todaysFood.reduce((sum, el) => {
     return sum + el.quantity * el.calories;
   }, 0);
+
   return (
     <div>
       {todaysFood.map((tf, id) => {
@@ -11,9 +12,8 @@ const TodaysFood = ({ todaysFood }) => {
           <>
             <li key={id}>
               {tf.quantity}&nbsp;
-              {tf.name}={tf.calories} cal
+              {tf.name}={tf.calories * tf.quantity} cal
             </li>
-            c
           </>
         );
       })}

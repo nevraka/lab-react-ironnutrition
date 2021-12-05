@@ -14,13 +14,15 @@ function App() {
   const [todaysFood, setTodaysFood] = useState([]);
 
   const handleSubmit = (e) => {
-    e.preventdefault();
+    e.preventDefault();
     let newFood = {
-      name: e.target.title.value,
-      calories: e.target.price.value,
+      name: e.target.name.value,
+      calories: e.target.calories.value,
       image: e.target.image.value,
     };
+    console.log(newFood);
     setFoodArray([newFood, ...foodArray]);
+    setCopyFoods([newFood, ...copyFoods]);
     setShowForm(false);
   };
 
@@ -37,18 +39,31 @@ function App() {
   };
 
   const handleAdd = (food, quantity) => {
-    // Create our object with quantity
-    let todaysDish = {
-      name: food.name,
-      quantity: quantity,
-      calories: food.calories,
-    };
-    setTodaysFood([todaysDish, ...todaysFood]);
+    let found = null;
+    for (let i = 0; i < todaysFood.length; i++) {
+      const f = todaysFood[i];
+      if (f.name === food.name) {
+        found = f;
+        break;
+      }
+    }
+    if (found) {
+      found.quantity += quantity;
+      setTodaysFood([...todaysFood]);
+    } else {
+      // Create our object with quantity
+      let todaysDish = {
+        name: food.name,
+        quantity: quantity,
+        calories: food.calories,
+      };
+      setTodaysFood([todaysDish, ...todaysFood]);
+    }
   };
 
   return (
-    <div class="columns">
-      <div class="column">
+    <div className="columns">
+      <div className="column">
         <button onClick={handleShowForm}>Add an Dish</button>
         <SearchBar handleSearch={handleSearch} />
         {showForm ? (
@@ -61,7 +76,7 @@ function App() {
           return <FoodBox key={id} food={el} handleAdd={handleAdd} />;
         })}
       </div>
-      <div class="column">
+      <div className="column">
         Today's Food
         <TodaysFood todaysFood={todaysFood} />
       </div>

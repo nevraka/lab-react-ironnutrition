@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 const FoodBox = ({ food, handleAdd }) => {
   const [quantity, setQuantity] = useState(0);
+
   return (
     <div>
-      <div class="box">
+      <div className="box">
         <article className="media">
           <div className="media-left">
             <figure className="image is-64x64">
@@ -27,7 +28,7 @@ const FoodBox = ({ food, handleAdd }) => {
                   type="number"
                   value={quantity}
                   onChange={(e) => {
-                    setQuantity(e.target.value);
+                    setQuantity(parseInt(e.target.value));
                   }}
                 />
               </div>

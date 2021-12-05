@@ -2,42 +2,42 @@ const Form = ({ handleSubmit }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div class="field">
-          <label class="label">Name</label>
-          <div class="control">
+        <div className="field">
+          <label className="label">Name</label>
+          <div className="control">
             <input
               name="name"
-              class="input"
+              className="input"
               type="text"
               placeholder="Text input"
             />
           </div>
         </div>
-        <div class="field">
-          <label class="label">Calories</label>
-          <div class="control has-icons-left has-icons-right">
+        <div className="field">
+          <label className="label">Calories</label>
+          <div className="control has-icons-left has-icons-right">
             <input
               name="calories"
-              class="input is-success"
+              className="input is-success"
               type="text"
               placeholder="Enter calories"
             />
           </div>
         </div>
-        <div class="field">
-          <label class="label">Image</label>
-          <div class="control has-icons-left has-icons-right">
+        <div className="field">
+          <label className="label">Image</label>
+          <div className="control has-icons-left has-icons-right">
             <input
               name="image"
-              class="input is-success"
+              className="input is-success"
               type="text"
               placeholder="Enter image"
             />
           </div>
         </div>
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link">Submit</button>
+        <div className="field is-grouped">
+          <div className="control">
+            <button className="button is-link">Submit</button>
           </div>
         </div>
       </form>
